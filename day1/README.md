@@ -40,7 +40,7 @@ Instructions for networking can be found in the [conductor config](conductor-con
 
 ### Holochain DNA
 
-Building the DNA also requires that the holochain developer CLI, `hc`, is installed. You can run the helper script
+Building the DNA also requires that the holochain developer CLI, `hc`, is installed. Once you have `hc` installed, you can run the helper script
 
 ```
 npm run hc:build
