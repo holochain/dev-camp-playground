@@ -4,11 +4,19 @@ A simple event app designed to get new users up, running and developing on Holoc
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for testing purposes.
 
 ### Prerequisites
 
-...
+There is only one prerequisite, if you are on Mac or Ubuntu:
+On MacOS:
+```
+brew install zmq
+```
+On Ubuntu:
+```
+apt-get install libzmq3-dev
+```
 
 ### Running
 
@@ -27,7 +35,8 @@ Change directories in the terminal to the `day1` folder.
 - **gnu**
     - `$ sh ./run-windows-gnu.sh`
 
-> Then, open [http://localhost:3000](http://localhost:3000) in your browser. You're running Holochain!
+
+Then, open [http://localhost:3000](http://localhost:3000) in your browser. You're running Holochain!
 
 
 ### Networking
