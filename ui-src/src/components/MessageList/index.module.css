@@ -1,7 +1,6 @@
 .component {
   flex: 1 1 100%;
   padding: 1rem;
-  border-bottom: 2rem solid #fafafa;
   margin: 0;
   display: flex;
   overflow-y: auto;

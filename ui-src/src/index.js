@@ -4,14 +4,11 @@ import './index.css'
 import { connect } from '@holochain/hc-web-client'
 
 import { UserHeader } from './components/UserHeader'
-import { UserList } from './components/UserList'
-import { MessageList } from './components/MessageList'
-import { CreateMessageForm } from './components/CreateMessageForm'
-import { RoomList } from './components/RoomList'
-import { RoomHeader } from './components/RoomHeader'
-import { CreateRoomForm } from './components/CreateRoomForm'
+import { EventList } from './components/EventList'
+import { EventHeader } from './components/EventHeader'
+import { CreateEventForm } from './components/CreateEventForm'
 import { WelcomeScreen } from './components/WelcomeScreen'
-import { JoinRoomScreen } from './components/JoinRoomScreen'
+import { JoinEventScreen } from './components/JoinEventScreen'
 import { RegisterScreen } from './components/RegisterScreen'
 
 // --------------------------------------
@@ -26,8 +23,8 @@ class View extends React.Component {
       connected: false,
       user: {},
       users: {},
-      room: {},
-      rooms: [],
+      event: {},
+      events: [],
       messages: {},
       sidebarOpen: false,
       userListOpen: window.innerWidth > 1000
@@ -47,31 +44,31 @@ class View extends React.Component {
 
       setUser: user => {
         this.setState({ user })
-        this.actions.getRooms()
+        this.actions.getEvents()
       },
 
       // --------------------------------------
-      // Room
+      // Event
       // --------------------------------------
 
-      setRoom: room => {
-        this.setState({ room, sidebarOpen: false })
-        this.actions.getMessages(room.id)
-        this.actions.getRoomMembers(room.id)
+      setEvent: event => {
+        this.setState({ event, sidebarOpen: false })
+        this.actions.getMessages(event.id)
+        this.actions.getEventMembers(event.id)
         this.actions.scrollToEnd()
       },
 
-      joinRoom: room => {
-        console.log('joining room')
-        this.actions.setRoom(room)
-        this.makeHolochainCall('holo-chat/chat/join_stream', { stream_address: room.id }, (result) => {
-          console.log('joined room', result)
+      joinEvent: event => {
+        console.log('joining event')
+        this.actions.setEvent(event)
+        this.makeHolochainCall('events-goer-4000/event/join_event', { event_address: event.id }, (result) => {
+          console.log('joined event', result)
         })
       },
 
-      getRoomMembers: roomId => {
-        this.makeHolochainCall('holo-chat/chat/get_members', {
-          stream_address: roomId
+      getEventMembers: eventId => {
+        this.makeHolochainCall('events-goer-4000/event/get_members', {
+          event_address: eventId
         }, (result) => {
           console.log('retrieved members', result)
           const users = result.Ok
@@ -79,33 +76,33 @@ class View extends React.Component {
             this.actions.getUserProfile(address)
           })
           this.setState({
-            room: { ...this.state.room, users }
+            event: { ...this.state.event, users }
           })
         })
       },
 
-      sendMessage: ({ text, roomId }) => {
+      sendMessage: ({ text, eventId }) => {
         const message = {
           message_type: 'text',
           timestamp: Math.floor(Date.now() / 1000),
           payload: text,
           meta: ''
         }
-        this.makeHolochainCall('holo-chat/chat/post_message', {
-          stream_address: roomId,
+        this.makeHolochainCall('events-goer-4000/event/post_message', {
+          event_address: eventId,
           message
         }, (result) => {
           console.log('message posted', result)
-          setTimeout(() => this.actions.getMessages(roomId), 1000) // hack for now
+          setTimeout(() => this.actions.getMessages(eventId), 1000) // hack for now
           this.actions.scrollToEnd()
         })
       },
 
-      getMessages: (roomId) => {
-        this.makeHolochainCall('holo-chat/chat/get_messages', { address: roomId }, (result) => {
+      getMessages: (eventId) => {
+        this.makeHolochainCall('events-goer-4000/event/get_messages', { address: eventId }, (result) => {
           console.log('retrieved messages', result)
 
-          const roomMessages = result.Ok.map(({ address, entry }) => ({
+          const eventMessages = result.Ok.map(({ address, entry }) => ({
             text: entry.payload,
             sender: entry.author,
             createdAt: entry.timestamp,
@@ -113,31 +110,30 @@ class View extends React.Component {
           }))
 
           this.setState({
-            messages: { ...this.state.messages, [roomId]: roomMessages }
+            messages: { ...this.state.messages, [eventId]: eventMessages }
           })
         })
       },
 
-      createRoom: options => {
-        console.log(options)
-        const roomSpec = {
+      createEvent: options => {
+        const eventSpec = {
           name: options.name,
-          description: '',
+          description: options.description,
           initial_members: []
         }
-        this.makeHolochainCall('holo-chat/chat/create_stream', roomSpec, (result) => {
-          console.log('created room', result)
-          this.actions.setRoom({
+        this.makeHolochainCall('events-goer-4000/event/create_event', eventSpec, (result) => {
+          console.log('created event', result)
+          this.actions.setEvent({
             id: result.Ok,
             name: options.name,
             users: []
           })
-          this.actions.getRooms()
+          this.actions.getEvents()
         })
       },
 
       getUserProfile: userId => {
-        this.makeHolochainCall('holo-chat/chat/get_member_profile', { agent_address: userId }, (result) => {
+        this.makeHolochainCall('events-goer-4000/event/get_member_profile', { agent_address: userId }, (result) => {
           console.log('retrieved profile', result)
           this.setState({
             users: { ...this.state.users, [userId]: result.Ok }
@@ -145,10 +141,10 @@ class View extends React.Component {
         })
       },
 
-      getRooms: () => {
-        this.makeHolochainCall('holo-chat/chat/get_all_public_streams', {}, (result) => {
-          console.log('retrieved public rooms', result)
-          let rooms = result.Ok.map(({ address, entry }) => {
+      getEvents: () => {
+        this.makeHolochainCall('events-goer-4000/event/get_all_public_events', {}, (result) => {
+          console.log('retrieved public events', result)
+          let events = result.Ok.map(({ address, entry }) => {
             return {
               id: address,
               private: !entry.public,
@@ -157,13 +153,13 @@ class View extends React.Component {
             }
           })
           this.setState({
-            rooms
+            events
           })
         })
       },
 
       registerUser: ({ name, avatarURL }) => {
-        this.makeHolochainCall('holo-chat/chat/register', { name, avatar_url: avatarURL }, result => {
+        this.makeHolochainCall('events-goer-4000/event/register', { name, avatar_url: avatarURL }, result => {
           console.log('registered user', result)
           this.actions.setUser({ id: result.Ok, name, avatarURL })
         })
@@ -180,7 +176,7 @@ class View extends React.Component {
 
   componentDidMount () {
     this.state.holochainConnection.then(({ call }) => {
-      call('holo-chat/chat/get_my_member_profile')({}).then((result) => {
+      call('events-goer-4000/event/get_my_member_profile')({}).then((result) => {
         const profile = JSON.parse(result).Ok
         if (profile) {
           console.log('registration user found with profile:', profile)
@@ -203,50 +199,32 @@ class View extends React.Component {
     const {
       user,
       users,
-      room,
-      rooms,
+      event,
+      events,
       messages,
       sidebarOpen,
       userListOpen,
       connected
     } = this.state
-    const { createRoom, registerUser } = this.actions
+    const { createEvent, registerUser } = this.actions
 
     return (
       <main>
-        <aside data-open={sidebarOpen}>
+        <section data-open={sidebarOpen}>
           <UserHeader user={user} />
-          <RoomList
+          {user.id && <CreateEventForm submit={createEvent} />}
+          {user.id && <EventList
+            state={this.state}
             user={user}
-            rooms={rooms}
+            users={users}
+            userListOpen={userListOpen}
+            events={events}
             messages={messages}
-            current={room}
+            current={event}
             actions={this.actions}
-          />
-          {user.id && <CreateRoomForm submit={createRoom} />}
-        </aside>
-        <section>
-          <RoomHeader state={this.state} actions={this.actions} />
-          {room.id ? (
-            <row->
-              <col->
-                <MessageList
-                  user={user}
-                  users={users}
-                  messages={messages[room.id]}
-                />
-                <CreateMessageForm state={this.state} actions={this.actions} />
-              </col->
-              {userListOpen && (
-                <UserList
-                  room={room}
-                  current={user.id}
-                  users={users}
-                />
-              )}
-            </row->
-          ) : connected ? (
-            user.id ? <JoinRoomScreen /> : <RegisterScreen registerUser={registerUser} />
+          />}
+          { connected ? (
+            user.id ? null : <RegisterScreen registerUser={registerUser} />
           ) : (
             <WelcomeScreen message='Connecting to Holochain... Make sure the conductor is running and try refreshing the page' />
           )}

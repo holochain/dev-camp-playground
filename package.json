@@ -1,10 +1,10 @@
 {
-  "name": "basic-chat",
+  "name": "basic-event",
   "version": "1.0.0",
-  "description": "A chat demo for holochain",
+  "description": "A event demo for holochain",
   "main": "index.js",
   "scripts": {
-    "hc:build": "mkdir -p dna && cd dna-src && hc package --strip-meta -o ../dna/holo-chat.hcpkg",
+    "hc:build": "mkdir -p dna && cd dna-src && hc package --strip-meta -o ../dna/events-goer-4000.hcpkg",
     "hc:start": "holochain -c ./conductor-config.toml"
   },
   "author": "",

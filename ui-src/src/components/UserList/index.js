@@ -1,9 +1,9 @@
 import React from 'react'
 import style from './index.module.css'
 
-export const UserList = ({ room, current, users }) => (
+export const UserList = ({ event, current, users }) => (
   <ul className={style.component}>
-    {room.users.map(user => (
+    {event.users.map(user => (
       <li
         key={user}
       >

@@ -1,6 +1,6 @@
 # Holochain Basic Chat
 
-A simple chat app designed to get new users up, running and developing on Holochain
+A simple event app designed to get new users up, running and developing on Holochain
 
 ## Getting Started
 
@@ -47,7 +47,7 @@ or use the CLI directly
 ```
 mkdir -p dna
 cd dna-src
-hc package --strip-meta -o ../dna/holo-chat.hcpkg
+hc package --strip-meta -o ../dna/events-goer-4000.hcpkg
 ```
 
 ### UI
@@ -63,7 +63,7 @@ npm run build
 * [Holochain](https://developer.holochain.org/)
 * [React](https://reactjs.org/)
 
-A huge acknowledgement to Pusher for providing an open source React chat UI (https://github.com/pusher/react-slack-clone)
+A huge acknowledgement to Pusher for providing an open source React event UI (https://github.com/pusher/react-slack-clone)
 
 ## Authors
 

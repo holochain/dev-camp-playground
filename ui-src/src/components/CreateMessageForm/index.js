@@ -2,10 +2,10 @@ import React from 'react'
 import style from './index.module.css'
 
 export const CreateMessageForm = ({
-  state: { user = {}, room = {}, message = '' },
+  eventId,
   actions: { sendMessage, runCommand }
 }) =>
-  room.id ? (
+  eventId ? (
     <form
       className={style.component}
       onSubmit={e => {
@@ -23,7 +23,7 @@ export const CreateMessageForm = ({
           ? runCommand(message.slice(1))
           : sendMessage({
             text: message,
-            roomId: room.id
+            eventId
           })
       }}
     >

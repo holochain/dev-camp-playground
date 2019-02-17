@@ -14,7 +14,7 @@ export const RegisterScreen = ({ registerUser }) => (
         </svg>
       </span>
       <p>
-        It looks like this is the first time using chat with this agent.
+        It looks like this is the first time using event with this agent.
         Register a handle and avatar for this agent ID.
       </p>
       <form
