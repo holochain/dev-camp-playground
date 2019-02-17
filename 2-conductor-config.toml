@@ -36,8 +36,7 @@ agent = "test_agent2"
 type = "simple"
 file = "app_spec.log"
 [instances.storage]
-type = "file"
-path = "tmp-storage-2"
+type = "memory"
 
 
 [[interfaces]]
@@ -66,7 +65,7 @@ dna_interface = "websocket_interface"
 [network]
 n3h_path = "/Users/connor/code/holochain/n3h"
 n3h_persistence_path = "/tmp"
-bootstrap_nodes = ["/ip4/192.168.0.25/tcp/51816/ipfs/QmeZCiJkjzLCH2toUUAF68QedhGq5g6pUu3EyXKtN38ufE"]
+bootstrap_nodes = ["/ip4/192.168.0.54/tcp/55303/ipfs/QmWHdzUp5MrnTkevX1iDEgbKvGrYRvV4NfrVwcUELGHLvf"]
 
 # -----------  Networking instructions  -----------
 
