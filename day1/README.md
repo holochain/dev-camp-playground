@@ -8,22 +8,26 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-At a minimum you will need to have the binaries for the holochain conductor installed on your system. See [the official installation instructions](https://developer.holochain.org/start.html).
-
-Be sure to use the 0.0.4 release.
+...
 
 ### Running
 
-From the project root run the helper script
-```
-npm run hc:start
-```
+#### mac
+`$ ./run-mac.sh`
 
-or alternatively to call the conductor directly
+#### ubuntu
+`$ ./run-ubuntu.sh`
 
-```
-holochain -c ./conductor-config.toml
-```
+#### windows
+Download and Install Git Bash
+Open Git Bash
+Change directories in the terminal to the `day1` folder.
+**msvc**
+`$ sh ./run-windows-msvc.sh`
+**gnu**
+`$ sh ./run-windows-gnu.sh`
+
+> Then, open [http://localhost:3000](http://localhost:3000) in your browser. You're running Holochain!
 
 
 ### Networking
@@ -68,6 +72,7 @@ A huge acknowledgement to Pusher for providing an open source React event UI (ht
 ## Authors
 
 * **Willem Olding** - *Initial work* - [willemolding](https://github.com/willemolding)
+* **Connor Turland** - [Connoropolous](https://github.com/Connoropolous)
 
 ## License
 
