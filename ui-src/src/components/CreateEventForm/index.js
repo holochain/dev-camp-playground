@@ -21,8 +21,8 @@ export const CreateEventForm = ({ submit }) => (
       e.target[0].value = ''
       e.target[1].value = ''
     }}
-  > <label>Create a new event</label>
-    <input placeholder='Name...' name="eventDescription" />
+  > <label>Create A New Event</label>
+    <input placeholder='Name...' className={style.eventName} />
     <input placeholder='Description...' />
     <button type='submit'>
       <svg>

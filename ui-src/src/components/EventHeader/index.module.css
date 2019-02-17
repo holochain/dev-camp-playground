@@ -7,12 +7,6 @@
   height: 4.8rem;
 }
 
-.component button {
-  background: transparent;
-  border: 0;
-  padding: 0;
-}
-
 .component h1 {
   font-size: 1.38rem;
   color: rgba(0, 0, 0, 0.62);
@@ -32,20 +26,9 @@
   border-radius: 0.5rem;
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 }
 
 .component div > * + * {
   margin-left: 0.38rem;
-}
-
-.component svg {
-  width: 1.8rem;
-  height: 1.8rem;
-  fill: rgba(0, 0, 0, 0.38);
-}
-
-@media (min-width: 640px) {
-  .component button {
-    display: none;
-  }
 }

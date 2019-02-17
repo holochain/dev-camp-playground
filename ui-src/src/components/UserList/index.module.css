@@ -7,7 +7,7 @@
   padding: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  width: 24rem;
+  width: 100%;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -74,15 +74,4 @@
   background: #42b72a;
   border-radius: 50%;
   margin-left: auto;
-}
-
-@media (max-width: 1000px) {
-  .component {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 18rem;
-    box-shadow: 0 0.38rem 0.62rem rgba(0, 0, 0, 0.1);
-    max-height: 62vh;
-  }
 }

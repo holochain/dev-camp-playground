@@ -4,10 +4,9 @@ import { Message } from '../Message'
 
 const emptyList = (
   <div className={style.empty}>
-    <span role='img' aria-label='post'>
+    <div role='img' aria-label='post'>
       📝
-    </span>
-    <h2>No Messages Yet</h2>
+    </div>
     <p>Be the first to post in this event!</p>
   </div>
 )

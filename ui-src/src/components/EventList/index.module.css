@@ -8,13 +8,16 @@
   height: 100%;
 }
 
+.component > li:not(.openEvent) {
+  align-items: center;
+  cursor: pointer;
+}
+
 .component > li {
   flex: none;
   display: flex;
-  align-items: center;
   padding: 4rem 1rem;
   list-style: none;
-  cursor: pointer;
   font-weight: bold;
   user-select: none;
   color: rgba(0, 0, 0, 0.38);
@@ -26,7 +29,7 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.component li[disabled] {
+.component li.openEvent {
   background: rgba(0, 0, 0, 0.1);
   opacity: 1;
   color: rgba(0, 0, 0, 0.62);
@@ -50,7 +53,7 @@
   display: none;
 }
 
-.component label:not(:empty) {
+.component > li > col- label:not(:empty) {
   flex: none;
   display: flex;
   align-items: center;

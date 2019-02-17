@@ -19,7 +19,7 @@
 .component button {
   position: relative;
   border: 0;
-  background: #fff;
+  background: transparent;
   padding: 0;
   cursor: pointer;
 }
@@ -32,4 +32,8 @@
   width: 2rem;
   height: 2rem;
   fill: #006eff;
+}
+
+.component svg:hover {
+  fill: #004bac;
 }

@@ -8,7 +8,7 @@
   height: 3.6rem;
   display: flex;
   width: 100%;
-  margin-top: auto;
+  padding: 4rem 0;
 }
 
 .component label {
@@ -17,8 +17,8 @@
   font-weight: bold;
 }
 
-.component input[name="eventDescription"] {
-  flex: 1 1.5 100%;
+.component input.eventName {
+  flex: 1 1.9 100%;
 }
 
 .component > input {

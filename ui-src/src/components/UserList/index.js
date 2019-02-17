@@ -3,6 +3,7 @@ import style from './index.module.css'
 
 export const UserList = ({ event, current, users }) => (
   <ul className={style.component}>
+    <h2>Attendees</h2>
     {event.users.map(user => (
       <li
         key={user}

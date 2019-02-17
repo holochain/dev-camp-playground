@@ -16,60 +16,59 @@ export const EventList = ({
   events = [],
   user,
   users,
-  userListOpen,
   messages,
   current,
   actions
 }) => (
     <ul className={style.component}>
       {events.map(event => {
-        const messageKeys = Object.keys(messages[event.id] || {})
-        const latestMessage =
-          messageKeys.length > 0 && messages[event.id][messageKeys.pop()]
-        const firstUser = event.users.find(x => x.id !== user.id)
-        let result = []
+        const attendingCurrent = current.users ? current.users.find(x => x === user.id) : false
+
+        let renderResult = []
+
+        // a little preview of the event
+        // click to expand
         if (event.id !== current.id) {
-          result.push(<li
+          renderResult.push(<li
             key={event.id}
             disabled={event.id === current.id}
             onClick={e => actions.setEvent(event)}
           >
-            {event.name.match(user.id) && firstUser ? (
-              <img src={firstUser.avatarURL} alt={firstUser.id} />
-            ) : (
-                Icon(event.isPrivate ? 'lock' : 'public')
-              )}
+            {Icon(event.isPrivate ? 'lock' : 'public')}
             <col->
               <p>{event.name.replace(user.id, '')}</p>
-              <span>{latestMessage && latestMessage.text}</span>
+              <span>{event.description}</span>
             </col->
           </li>)
         }
 
+        // the expanded view of the selected event
         if (event.id === current.id) {
-          result.push(<li key={'openHeader' + event.id} disabled>
-            <button onClick={() => actions.joinEvent(event)}>Attend</button>
+          renderResult.push(<li key={'openHeader' + event.id} className={style.openEvent}>
             <EventHeader state={state} actions={actions} />
           </li>)
-          result.push(<li key={'openPanel' + event.id} disabled>
+          renderResult.push(<li key={'openPanel' + event.id} className={style.openEvent}>
             <col->
-              <MessageList
+              <h3>Description</h3>
+              <h5>{event.description}</h5>
+              {attendingCurrent && <MessageList
                 user={user}
                 users={users}
                 messages={messages[event.id]}
-              />
-              <CreateMessageForm eventId={current ? current.id : false} actions={actions} />
+              />}
+              {attendingCurrent &&
+                <CreateMessageForm eventId={current ? current.id : false} actions={actions} />}
             </col->
-            {userListOpen && (
+            <col->
               <UserList
-                event={event}
+                event={current}
                 current={user.id}
                 users={users}
               />
-            )}
+            </col->
           </li>)
         }
-        return result
+        return renderResult
       })}
     </ul>
   )

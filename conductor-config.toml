@@ -63,10 +63,10 @@ dna_interface = "websocket_interface"
 
 # -----------  Networking  -----------
 
-[network]
-n3h_path = "/Users/connor/code/holochain/n3h"
-n3h_persistence_path = "/tmp"
-bootstrap_nodes = []
+# [network]
+# n3h_path = "/Users/connor/code/holochain/n3h"
+# n3h_persistence_path = "/tmp"
+# bootstrap_nodes = []
 
 # -----------  Networking instructions  -----------
 

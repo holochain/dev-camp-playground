@@ -28,7 +28,7 @@ export const CreateMessageForm = ({
       }}
     >
       <input
-        placeholder='Type a Message..'
+        placeholder='Post a message to the event...'
       />
       <button type='submit'>
         <svg>

@@ -5,10 +5,8 @@ import { connect } from '@holochain/hc-web-client'
 
 import { UserHeader } from './components/UserHeader'
 import { EventList } from './components/EventList'
-import { EventHeader } from './components/EventHeader'
 import { CreateEventForm } from './components/CreateEventForm'
 import { WelcomeScreen } from './components/WelcomeScreen'
-import { JoinEventScreen } from './components/JoinEventScreen'
 import { RegisterScreen } from './components/RegisterScreen'
 
 // --------------------------------------
@@ -19,6 +17,7 @@ class View extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      // holochainConnection: connect('ws://localhost:3400'),
       holochainConnection: connect(),
       connected: false,
       user: {},
@@ -26,8 +25,7 @@ class View extends React.Component {
       event: {},
       events: [],
       messages: {},
-      sidebarOpen: false,
-      userListOpen: window.innerWidth > 1000
+      sidebarOpen: false
     }
 
     this.actions = {
@@ -36,7 +34,6 @@ class View extends React.Component {
       // --------------------------------------
 
       setSidebar: sidebarOpen => this.setState({ sidebarOpen }),
-      setUserList: userListOpen => this.setState({ userListOpen }),
 
       // --------------------------------------
       // User
@@ -126,6 +123,7 @@ class View extends React.Component {
           this.actions.setEvent({
             id: result.Ok,
             name: options.name,
+            description: options.description,
             users: []
           })
           this.actions.getEvents()
@@ -149,6 +147,7 @@ class View extends React.Component {
               id: address,
               private: !entry.public,
               name: entry.name,
+              description: entry.description,
               users: []
             }
           })
@@ -203,7 +202,6 @@ class View extends React.Component {
       events,
       messages,
       sidebarOpen,
-      userListOpen,
       connected
     } = this.state
     const { createEvent, registerUser } = this.actions
@@ -211,13 +209,12 @@ class View extends React.Component {
     return (
       <main>
         <section data-open={sidebarOpen}>
-          <UserHeader user={user} />
+          <UserHeader sidebarOpen={sidebarOpen} user={user} setSidebar={this.actions.setSidebar} />
           {user.id && <CreateEventForm submit={createEvent} />}
           {user.id && <EventList
             state={this.state}
             user={user}
             users={users}
-            userListOpen={userListOpen}
             events={events}
             messages={messages}
             current={event}
