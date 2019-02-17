@@ -1,4 +1,5 @@
 import React from 'react'
+import Icons from '../../index.svg'
 import style from './index.module.css'
 import { EventHeader } from '../EventHeader'
 import { UserList } from '../UserList'
@@ -7,7 +8,7 @@ import { CreateMessageForm } from '../CreateMessageForm'
 
 const Icon = id => (
   <svg>
-    <use xlinkHref={`index.svg#${id}`} />
+    <use xlinkHref={`${Icons}#${id}`} />
   </svg>
 )
 

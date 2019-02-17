@@ -1,4 +1,5 @@
 import React from 'react'
+import Icons from '../../index.svg'
 import style from './index.module.css'
 
 export const CreateMessageForm = ({
@@ -32,7 +33,7 @@ export const CreateMessageForm = ({
       />
       <button type='submit'>
         <svg>
-          <use xlinkHref='index.svg#send' />
+          <use xlinkHref={`${Icons}#send`} />
         </svg>
       </button>
     </form>

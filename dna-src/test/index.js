@@ -6,7 +6,7 @@ const agentAlice = Config.agent("alice")
 const instanceAlice = Config.instance(agentAlice, dna)
 const scenario = new Scenario([instanceAlice])
 
-/*----------  Chat  ----------*/
+/*----------  Events  ----------*/
 
 
 const testNewChannelParams = {

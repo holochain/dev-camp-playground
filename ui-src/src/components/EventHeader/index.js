@@ -1,4 +1,5 @@
 import React from 'react'
+import Icons from '../../index.svg'
 import style from './index.module.css'
 
 export const EventHeader = ({
@@ -18,7 +19,7 @@ export const EventHeader = ({
         <div>
           <span>{event.users.length}</span>
           <svg>
-            <use xlinkHref='index.svg#members' />
+            <use xlinkHref={`${Icons}#members`} />
           </svg>
         </div>
       )}

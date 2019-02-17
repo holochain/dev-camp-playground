@@ -1,4 +1,5 @@
 import React from 'react'
+import Icons from '../../index.svg'
 import style from './index.module.css'
 
 const placeholder =
@@ -8,7 +9,7 @@ export const UserHeader = ({ sidebarOpen, user = {}, setSidebar }) => (
   <header className={style.component}>
     <button onClick={e => setSidebar(!sidebarOpen)}>
       <svg>
-        <use xlinkHref='index.svg#menu' />
+        <use xlinkHref={`${Icons}#menu`} />
       </svg>
     </button>
     <img src={user.avatarURL || placeholder} alt='' />

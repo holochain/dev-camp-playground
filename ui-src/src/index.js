@@ -17,8 +17,8 @@ class View extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      // holochainConnection: connect('ws://localhost:3400'),
-      holochainConnection: connect(),
+      holochainConnection: connect('ws://localhost:3400'),
+      // holochainConnection: connect(),
       connected: false,
       user: {},
       users: {},
