@@ -36,7 +36,8 @@ agent = "test_agent1"
 type = "simple"
 file = "app_spec.log"
 [instances.storage]
-type = "memory"
+type = "file"
+path= "tmp-storage"
 
 
 [[interfaces]]
@@ -62,17 +63,17 @@ dna_interface = "websocket_interface"
 
 # -----------  Networking  -----------
 
-[network]
-n3h_path = "/Users/connor/code/holochain/n3h"
-n3h_persistence_path = "/tmp"
-bootstrap_nodes = []
+# [network]
+# n3h_path = "/path/to/n3h"
+# n3h_persistence_path = "/tmp"
+# bootstrap_nodes = []
 
 # -----------  Networking instructions  -----------
 
 # To get networking running requires the following steps:
 
 # - Clone the repo for the holochain networking library n3h (https://github.com/holochain/n3h)
-# - Checkout the tag in n3h for holochain v0.0.4-alpha (git fetch --tags && git checkout v0.0.4-alpha)
+# - Checkout the tag in n3h for holochain v0.0.4-alpha1 (git fetch --tags && git checkout v0.0.4-alpha1)
 # - run `npm install && npm run boostrap` in the n3h directory
 # - change the n3h_path below to point to the location where you cloned the repo
 
