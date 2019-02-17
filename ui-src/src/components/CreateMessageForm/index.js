@@ -1,5 +1,4 @@
 import React from 'react'
-import Icons from '../../index.svg'
 import style from './index.module.css'
 
 export const CreateMessageForm = ({
@@ -32,9 +31,10 @@ export const CreateMessageForm = ({
         placeholder='Post a message to the event...'
       />
       <button type='submit'>
-        <svg>
-          <use xlinkHref={`${Icons}#send`} />
-        </svg>
+      <svg id="send" viewBox="0 0 24 24">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        <path d="M0 0h24v24H0z" fill="none"/>
+      </svg>
       </button>
     </form>
   ) : null
