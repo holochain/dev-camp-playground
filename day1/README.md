@@ -22,10 +22,10 @@ These instructions will get you a copy of the project up and running on your loc
 Download and Install Git Bash
 Open Git Bash
 Change directories in the terminal to the `day1` folder.
-**msvc**
-`$ sh ./run-windows-msvc.sh`
-**gnu**
-`$ sh ./run-windows-gnu.sh`
+- **msvc**
+    - `$ sh ./run-windows-msvc.sh`
+- **gnu**
+    - `$ sh ./run-windows-gnu.sh`
 
 > Then, open [http://localhost:3000](http://localhost:3000) in your browser. You're running Holochain!
 
