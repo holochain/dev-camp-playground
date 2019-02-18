@@ -39,10 +39,10 @@ Change directories in the terminal to the `day1` folder.
 ### Open it in the Browser
 
 #### mac and ubuntu
-Open [http://localhost:3000](http://localhost:3000) in your browser. 
+Open [http://localhost:4000](http://localhost:4000) in your browser. 
 
 ### windows
-Open [http://localhost:3000/index.html](http://localhost:3000/index.html) in your browser. (without index.html will not work)
+Open [http://localhost:4000/index.html](http://localhost:4000/index.html) in your browser. (without index.html will not work)
 
 You're running a Holochain app!
 
