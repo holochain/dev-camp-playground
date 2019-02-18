@@ -27,7 +27,8 @@ apt-get install libzmq3-dev
 `$ ./run-ubuntu.sh`
 
 #### windows
-Download and Install Git Bash
+Download and Install [Git Bash](https://git-scm.com/downloads) if you don't already have it.
+It provides a Bash terminal, helpful for launching the necessary scripts.
 Open Git Bash
 Change directories in the terminal to the `day1` folder.
 - **msvc**
