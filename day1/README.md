@@ -36,8 +36,15 @@ Change directories in the terminal to the `day1` folder.
 - **gnu**
     - `$ sh ./run-windows-gnu.sh`
 
+### Open it in the Browser
 
-Then, open [http://localhost:3000](http://localhost:3000) in your browser. You're running Holochain!
+#### mac and ubuntu
+Open [http://localhost:3000](http://localhost:3000) in your browser. 
+
+### windows
+Open [http://localhost:3000/index.html](http://localhost:3000/index.html) in your browser. (without index.html will not work)
+
+You're running a Holochain app!
 
 
 ### Networking
