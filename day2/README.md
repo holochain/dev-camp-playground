@@ -66,6 +66,8 @@ npm run start
 
 This should automatically open up [http://localhost:3000](http://localhost:3000) in your browser, which is where your UI is now being served. Similar to when it was being served via the production `holochain` Conductor, but this time it has live-reload, and isn't serving static (pre-compiled) files, but dynamic ones.
 
+When you have the UI running on localhost:3000 and it's showing the Register screen, yay! You have everything you need to get started doing "full-stack" Holochain development. That is: a running DNA Instance, and a running UI connecting to it.
+
 Under the `react-ui-src` folder, open up the `index.js` file. 
 
 Note the two constant variables declared near the top, `instanceID`, and `holochainWebsocketUri`.
