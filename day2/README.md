@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 You must have the Holochain 0.0.4-alpha command line tools installed.
-The instructions for that are found in the [quick start guide](https://developer.holochain.org/start.html). 
+The instructions for that are found in the [quick start guide](https://developer.holochain.org/start.html#development-section). 
 
 ### Developing Source Code
 
