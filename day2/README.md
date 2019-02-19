@@ -9,7 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 You must have the Holochain 0.0.4-alpha command line tools installed.
-The instructions for that are found in the quick start guide of the command 
+The instructions for that are found in the [quick start guide](https://developer.holochain.org/start.html). 
 
 ### Developing Source Code
 
@@ -52,7 +52,6 @@ WebSockets for the UI to connect to. The API is defined as described here in art
 
 ### UI With React
 
-#### With React
 Run the UI in development mode. When you make changes to the files, it will live-reload in the browser showing your changes.
 
 ```
