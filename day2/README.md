@@ -60,7 +60,7 @@ npm install
 npm run start
 ```
 
-This should automatically open up [http://localhost:3000](http://localhost:3000) in your browser, which is where your UI is now being served. Similar to when it was being served via the production `holochain` Conductor, but this time it has live-reload, and isn't serving static (pre-compiled) files, but dynamic ones.
+This should automatically open up [http://localhost:4000](http://localhost:4000) in your browser, which is where your UI is now being served. Similar to when it was being served via the production `holochain` Conductor, but this time it has live-reload, and isn't serving static (pre-compiled) files, but dynamic ones.
 
 Under the `react-ui-src` folder, open up the `index.js` file. 
 
@@ -68,7 +68,7 @@ Note the two constant variables declared near the top, `instanceID`, and `holoch
 These are configured differently when we're writing code in development mode, than when we want to ship it. The code comments clarify how to tweak these variables. Do a search in the file for where those variables are used.
 
 As a starting point for playing with the code, open up `/react-ui-src/src/components/RegisterScreen/index.js`.
-In that file, change the name `Events Goer 4000` on line 17 to some other name you come up with. Once you change it, save it. Now check out the browser [http://localhost:3000](http://localhost:3000) again. You'll see the name has updated.
+In that file, change the name `Events Goer 4000` on line 17 to some other name you come up with. Once you change it, save it. Now check out the browser [http://localhost:4000](http://localhost:4000) again. You'll see the name has updated.
 
 If you want to extend the functionality of the app, here's where to start:
 
