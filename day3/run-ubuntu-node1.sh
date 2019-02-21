@@ -1,2 +1,2 @@
 #!/bin/bash
-./holochain-ubuntu -c ./conductor-config.toml
+./holochain-ubuntu -c ./conductor-config-node1.toml
