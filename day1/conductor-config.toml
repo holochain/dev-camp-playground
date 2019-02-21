@@ -58,7 +58,7 @@ hash = "Qm000"
 [[ui_interfaces]]
 id = "ui-interface"
 bundle = "main"
-port = 3000
+port = 4000
 dna_interface = "websocket_interface"
 
 # -----------  Networking  -----------
