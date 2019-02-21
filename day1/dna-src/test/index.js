@@ -12,6 +12,7 @@ const scenario = new Scenario([instanceAlice])
 const testNewChannelParams = {
   name: "test new event",
   description: "for testing...",
+  location: "test location",
   initial_members: [],
   public: true
 }

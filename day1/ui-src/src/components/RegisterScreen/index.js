@@ -23,6 +23,7 @@ export const RegisterScreen = ({ registerUser }) => (
 
           const name = e.target[0].value
           const avatarURL = e.target[1].value
+         
 
           if (name.length === 0) {
             return

@@ -46,7 +46,7 @@ define_zome! {
 			handler: member::handlers::handle_register
 		}
 		create_event: {
-			inputs: |name: String, description: String, initial_members: Vec<Address>|,
+			inputs: |name: String, description: String, location: String, initial_members: Vec<Address>|,
 			outputs: |result: ZomeApiResult<Address>|,
 			handler: event::handlers::handle_create_event
 		}
