@@ -1,0 +1,56 @@
+
+# -----------  Agents  -----------
+
+
+[[agents]]
+id = "test_agent1"
+name = "HoloTester1"
+public_address = "sandwich--------------------------------------------------------------------------AAAEqzh28L"
+key_file = "holo_tester.key"
+
+# -----------  DNA  -----------
+
+
+[[dnas]]
+id = "event_dna"
+file = "dna/events-goer-4000.hcpkg"
+hash = "Qm328wyq38924y"
+
+[[instances]]
+id = "events-goer-4000"
+dna = "event_dna"
+agent = "test_agent1"
+[instances.logger]
+type = "simple"
+file = "app_spec.log"
+[instances.storage]
+type = "memory"
+
+
+[[interfaces]]
+id = "websocket_interface"
+[interfaces.driver]
+type = "websocket"
+port = 3400
+[[interfaces.instances]]
+id = "events-goer-4000"
+
+# -----------  UI  -----------
+
+[[ui_bundles]]
+id = "main"
+root_dir = "./ui"
+hash = "Qm000"
+
+[[ui_interfaces]]
+id = "ui-interface"
+bundle = "main"
+port = 3000
+dna_interface = "websocket_interface"
+
+# -----------  Networking  -----------
+
+[network]
+n3h_path = "n3h"
+n3h_persistence_path = "./"
+bootstrap_nodes = []
