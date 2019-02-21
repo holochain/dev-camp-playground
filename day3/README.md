@@ -46,7 +46,7 @@ When you run the first command, scroll up and take careful note of the line that
 You will need to copy the string that starts with "/ip4/192.168"... and place it into the value of
 the bootstrap_nodes field in `conductor-config-node2.toml`.
 The value will be different on every computer, so can't be re-used. It should look like:
-```bootstrap_nodes = ["/ip4/192.168.0.23/tcp/60906/ipfs/QmRVrz1bKU8VCkHLUQJFAsaVUiXYjksGPj6noHvYs43qWf"]`
+`bootstrap_nodes = ["/ip4/192.168.0.23/tcp/60906/ipfs/QmRVrz1bKU8VCkHLUQJFAsaVUiXYjksGPj6noHvYs43qWf"]`
 
 Open a new terminal, and change directories to day3. 
 Run the equivalent command as step 1, but ending in `-node2.sh`. For example:
