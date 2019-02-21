@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-There is only one prerequisite, if you are on Mac or Ubuntu:
+If you are on Mac or Ubuntu, you'll need zmq installed:
 On MacOS:
 ```
 brew install zmq
@@ -18,13 +18,18 @@ On Ubuntu:
 apt-get install libzmq3-dev
 ```
 
+You will also need to install the dependencies of n3h, the networking module.
+```shell
+cd n3h && npm install && npm run bootstrap && cd ..
+```
+
 ### Running
 
 #### mac
-`$ ./run-mac.sh`
+`$ ./run-mac-node1.sh`
 
 #### ubuntu
-`$ ./run-ubuntu.sh`
+`$ ./run-ubuntu-node1.sh`
 
 #### windows
 Download and Install [Git Bash](https://git-scm.com/downloads) if you don't already have it.
@@ -32,52 +37,35 @@ It provides a Bash terminal, helpful for launching the necessary scripts.
 Open Git Bash
 Change directories in the terminal to the `day1` folder.
 - **msvc**
-    - `$ sh ./run-windows-msvc.sh`
+    - `$ sh ./run-windows-msvc-node1.sh`
 - **gnu**
-    - `$ sh ./run-windows-gnu.sh`
+    - `$ sh ./run-windows-gnu-node1.sh`
+
+### Configuring Node 2 Networking
+When you run the first command, scroll up and take careful note of the line that begins with `READY! tcp://127.0.0.1:43859 [...]
+You will need to copy the string that starts with "/ip4/192.168"... and place it into the value of
+the bootstrap_nodes field in `conductor-config-node2.toml`.
+The value will be different on every computer, so can't be re-used. It should look like:
+```bootstrap_nodes = ["/ip4/192.168.0.23/tcp/60906/ipfs/QmRVrz1bKU8VCkHLUQJFAsaVUiXYjksGPj6noHvYs43qWf"]`
+
+Open a new terminal, and change directories to day3. 
+Run the equivalent command as step 1, but ending in `-node2.sh`. For example:
+`./run-mac-node2.sh`
 
 ### Open it in the Browser
 
 #### mac and ubuntu
-Open [http://localhost:3000](http://localhost:3000) in your browser. 
+Open [http://localhost:3000](http://localhost:3000) for node 1 and [http://localhost:3001](http://localhost:3001) for node 2 in your browser. 
 
 ### windows
-Open [http://localhost:3000/index.html](http://localhost:3000/index.html) in your browser. (without index.html will not work)
+Open [http://localhost:3000/index.html](http://localhost:3000/index.html) for node 1 and [http://localhost:3001/index.html](http://localhost:3001/index.html) for node 2 in your browser. (without index.html will not work)
 
-You're running a Holochain app!
+You're running a Holochain app with networking.
+
+Please note, there are still lots of quirky behaviours that occur during networking, and not to expect flawless results.
+The networking stack is under very active development, and is still at this point very immature.
 
 
-### Networking
-
-If you want to try and connect to other nodes this also requires the holochain networking library [n3h](https://github.com/holochain/n3h).
-
-Instructions for networking can be found in the [conductor config](conductor-config.toml) file.
-
-## Building from Source
-
-### Holochain DNA
-
-Building the DNA also requires that the holochain developer CLI, `hc`, is installed. Once you have `hc` installed, you can run the helper script
-
-```
-npm run hc:build
-```
-
-or use the CLI directly
-
-```
-mkdir -p dna
-cd dna-src
-hc package --strip-meta -o ../dna/events-goer-4000.hcpkg
-```
-
-### UI
-
-```
-cd ui-src
-npm install
-npm run build
-```
 
 ## Built With
 
