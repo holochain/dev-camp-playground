@@ -15,7 +15,8 @@ pub mod handlers;
 #[derive(Serialize, Deserialize, Debug, Clone, DefaultJson)]
 pub struct Event {
     pub name: String,
-    pub description: String
+    pub description: String,
+    pub location: String
 }
 
 

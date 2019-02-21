@@ -10,6 +10,8 @@ export const CreateEventForm = ({ submit }) => {
 
         const name = e.target[0].value
         const description = e.target[1].value
+        const location = e.target[2].value
+  
 
         if (name.length === 0) {
           return
@@ -17,14 +19,17 @@ export const CreateEventForm = ({ submit }) => {
 
         submit({
           name,
-          description
+          description,
+          location
         })
         e.target[0].value = ''
         e.target[1].value = ''
+        e.target[2].value = ''
       }}
     > <label>Create A New Event</label>
       <input placeholder='Name...' className={style.eventName} />
       <input placeholder='Description...' />
+      <input placeholder='location' />
       <button type='submit'>
       <svg id="add" viewBox="0 0 24 24">
         <path d="M0 0h24v24H0z" fill="none"/>

@@ -116,6 +116,7 @@ class View extends React.Component {
         const eventSpec = {
           name: options.name,
           description: options.description,
+          location: options.location,
           initial_members: []
         }
         this.makeHolochainCall('events-goer-4000/event/create_event', eventSpec, (result) => {
@@ -124,6 +125,7 @@ class View extends React.Component {
             id: result.Ok,
             name: options.name,
             description: options.description,
+            location: options.location,
             users: []
           })
           this.actions.getEvents()
@@ -148,6 +150,7 @@ class View extends React.Component {
               private: !entry.public,
               name: entry.name,
               description: entry.description,
+              location: entry.location,
               users: []
             }
           })

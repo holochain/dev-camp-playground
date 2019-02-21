@@ -19,10 +19,11 @@ use crate::message;
 pub fn handle_create_event(
     name: String,
     description: String,
+    location: String,
     initial_members: Vec<Address>,
 ) -> ZomeApiResult<Address> {
 
-    let event = Event{name, description};
+    let event = Event{name, description, location};
 
     let entry = Entry::App(
         "public_event".into(),
